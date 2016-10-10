@@ -2,15 +2,13 @@
 
 from parnassus import Cello_P5, Guitar_Std
 
-pleistos = 'n0'
+print
 
-print '\n Cello'
+Guitar_Std('j6')
 
-Cello_P5(pleistos)
+print
 
-print '\n Guitar'
-
-Guitar_Std(pleistos)
+Guitar_Std('k5')
 
 print
 
