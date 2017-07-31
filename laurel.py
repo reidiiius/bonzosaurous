@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
-from parnassus import Cello_P5, Guitar_Std
+from parnassus import beadgcf, bfbfb, cgdae, eadgbe, dadgad, dgdgbd, fkbjdn
 
-print
+print "\n"
 
-Guitar_Std('j6')
+eadgbe('j6')
 
-print
+print "\n"
 
-Guitar_Std('k5')
+eadgbe('k5')
 
-print
+print "\n"
 
