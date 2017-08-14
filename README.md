@@ -12,7 +12,7 @@ Paleontology
 ### Usage
 command line
 
-    python -B laurel.py
+    python -B laurel.py | less
 
 ---
 

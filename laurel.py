@@ -1,14 +1,8 @@
 #!/usr/bin/env python
 
-from parnassus import beadgcf, bfbfb, cgdae, eadgbe, dadgad, dgdgbd, fkbjdn
+from parnassus import beadgcf, cgdae, pleistos
 
-print "\n"
 
-eadgbe('j6')
+pleistos(beadgcf)
 
-print "\n"
-
-eadgbe('k5')
-
-print "\n"
 
