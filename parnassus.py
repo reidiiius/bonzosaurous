@@ -4,123 +4,122 @@ from time import time
 from phaedriades import omphalos
 
 
-baetylus = omphalos.keys()
-baetylus.sort()
+baetylus = sorted(omphalos.keys())
 
 chronozoic = '-v' + str(time())
 
 
-def Bj(qp):
-    return omphalos[qp][50:] + omphalos[qp][:50]
+def Bj(sign):
+    return omphalos[sign][50:] + omphalos[sign][:50]
 
 
-def Fn(qp):
-    return omphalos[qp][25:] + omphalos[qp][:25]
+def Fn(sign):
+    return omphalos[sign][25:] + omphalos[sign][:25]
 
 
-def Cn(qp):
-    return omphalos[qp][:]
+def Cn(sign):
+    return omphalos[sign][:]
 
 
-def Gn(qp):
-    return omphalos[qp][35:] + omphalos[qp][:35]
+def Gn(sign):
+    return omphalos[sign][35:] + omphalos[sign][:35]
 
 
-def Dn(qp):
-    return omphalos[qp][10:] + omphalos[qp][:10]
+def Dn(sign):
+    return omphalos[sign][10:] + omphalos[sign][:10]
 
 
-def An(qp):
-    return omphalos[qp][45:] + omphalos[qp][:45]
+def An(sign):
+    return omphalos[sign][45:] + omphalos[sign][:45]
 
 
-def En(qp):
-    return omphalos[qp][20:] + omphalos[qp][:20]
+def En(sign):
+    return omphalos[sign][20:] + omphalos[sign][:20]
 
 
-def Bn(qp):
-    return omphalos[qp][55:] + omphalos[qp][:55]
+def Bn(sign):
+    return omphalos[sign][55:] + omphalos[sign][:55]
 
 
-def Fk(qp):
-    return omphalos[qp][30:] + omphalos[qp][:30]
+def Fk(sign):
+    return omphalos[sign][30:] + omphalos[sign][:30]
 
 
-def beadgcf(qp):
-    print "\t" + qp + '-beadgcf' + chronozoic
-    print "\t" + Fn(qp)
-    print "\t" + Cn(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Dn(qp)
-    print "\t" + An(qp)
-    print "\t" + En(qp)
-    print "\t" + Bn(qp)
+def beadgcf(sign):
+    print("\t" + sign + '-beadgcf' + chronozoic)
+    print("\t" + Fn(sign))
+    print("\t" + Cn(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Dn(sign))
+    print("\t" + An(sign))
+    print("\t" + En(sign))
+    print("\t" + Bn(sign))
 
 
-def bfbfb(qp):
-    print "\t" + qp + '-bfbfb' + chronozoic
-    print "\t" + Bn(qp)
-    print "\t" + Fn(qp)
-    print "\t" + Bn(qp)
-    print "\t" + Fn(qp)
-    print "\t" + Bn(qp)
+def bfbfb(sign):
+    print("\t" + sign + '-bfbfb' + chronozoic)
+    print("\t" + Bn(sign))
+    print("\t" + Fn(sign))
+    print("\t" + Bn(sign))
+    print("\t" + Fn(sign))
+    print("\t" + Bn(sign))
 
 
-def cgdae(qp):
-    print "\t" + qp + '-cgdae' + chronozoic
-    print "\t" + En(qp)
-    print "\t" + An(qp)
-    print "\t" + Dn(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Cn(qp)
+def cgdae(sign):
+    print("\t" + sign + '-cgdae' + chronozoic)
+    print("\t" + En(sign))
+    print("\t" + An(sign))
+    print("\t" + Dn(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Cn(sign))
 
 
-def dadgad(qp):
-    print "\t" + qp + '-dadgad' + chronozoic
-    print "\t" + Dn(qp)
-    print "\t" + An(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Dn(qp)
-    print "\t" + An(qp)
-    print "\t" + Dn(qp)
+def dadgad(sign):
+    print("\t" + sign + '-dadgad' + chronozoic)
+    print("\t" + Dn(sign))
+    print("\t" + An(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Dn(sign))
+    print("\t" + An(sign))
+    print("\t" + Dn(sign))
 
 
-def dgdgbd(qp):
-    print "\t" + qp + '-dgdgbd' + chronozoic
-    print "\t" + Dn(qp)
-    print "\t" + Bn(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Dn(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Dn(qp)
+def dgdgbd(sign):
+    print("\t" + sign + '-dgdgbd' + chronozoic)
+    print("\t" + Dn(sign))
+    print("\t" + Bn(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Dn(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Dn(sign))
 
 
-def eadgbe(qp):
-    print "\t" + qp + '-eadgbe' + chronozoic
-    print "\t" + En(qp)
-    print "\t" + Bn(qp)
-    print "\t" + Gn(qp)
-    print "\t" + Dn(qp)
-    print "\t" + An(qp)
-    print "\t" + En(qp)
+def eadgbe(sign):
+    print("\t" + sign + '-eadgbe' + chronozoic)
+    print("\t" + En(sign))
+    print("\t" + Bn(sign))
+    print("\t" + Gn(sign))
+    print("\t" + Dn(sign))
+    print("\t" + An(sign))
+    print("\t" + En(sign))
 
 
-def fkbjdn(qp):
-    print "\t" + qp + '-fkbjdn' + chronozoic
-    print "\t" + Dn(qp)
-    print "\t" + Bj(qp)
-    print "\t" + Fk(qp)
-    print "\t" + Dn(qp)
-    print "\t" + Bj(qp)
-    print "\t" + Fk(qp)
+def fkbjdn(sign):
+    print("\t" + sign + '-fkbjdn' + chronozoic)
+    print("\t" + Dn(sign))
+    print("\t" + Bj(sign))
+    print("\t" + Fk(sign))
+    print("\t" + Dn(sign))
+    print("\t" + Bj(sign))
+    print("\t" + Fk(sign))
 
 
 def pleistos(lyra=eadgbe):
-    print
-    for qp in baetylus:
-        print
-        lyra(qp)
-        print
-    print
+    print('')
+    for sign in baetylus:
+        print('')
+        lyra(sign)
+        print('')
+    print('')
 
 
