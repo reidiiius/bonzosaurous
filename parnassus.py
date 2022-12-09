@@ -61,8 +61,8 @@ def Fk(sign):
 
 def layout(sign, tuned, pegbox):
     print("\t" + sign + '-' + tuned + chronozoic)
-    for diter in range(0, len(pegbox)):
-        print("\t" + pegbox[diter])
+    for ndx in range(0, len(pegbox)):
+        print("\t" + pegbox[ndx])
 
 
 def beadgcf(sign):
@@ -151,6 +151,15 @@ def fkbjdn(sign):
         Dn(sign),
         Bj(sign),
         Fk(sign),
+    ]
+    layout(sign, tuned, pegbox)
+
+
+def unison(sign):
+    tuned = 'unison'
+    pegbox = [
+        Cn(sign),
+        Cn(sign),
     ]
     layout(sign, tuned, pegbox)
 

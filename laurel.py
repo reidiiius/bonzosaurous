@@ -12,11 +12,11 @@ args = sys.argv
 
 lyra = beadgcf
 
-pate = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I)
+spat = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I)
 
 
 def validated(sign):
-  flag = pate.match(sign) and omphalos.get(sign)
+  flag = spat.match(sign) and omphalos.get(sign)
   return flag
 
 
@@ -42,9 +42,14 @@ def chalkboard():
 
     print("\n{}\n".format(accum))
     print("Tunings:")
-    print("\tbeadgcf bfbfb cgdae eadgbe fkbjdn\n")
+    print("\tbeadgcf bfbfb cgdae dadgad dgdgbd eadgbe fkbjdn\n")
     print("Example:")
     print("\t{} -B {} eadgbe n0 k6 j3 j6 j2\n".format(named, args[0]))
+
+
+if len(args) > len(baetylus):
+    print("Request denied!")
+    sys.exit(0)
 
 
 if len(args) > 1:
@@ -87,8 +92,11 @@ if len(args) > 1:
     elif 'p5' in head:
         lyra = cgdae
         hold = args.pop(0)
+    elif 'un' in head:
+        lyra = unison
+        hold = args.pop(0)
     else:
-        lyra = beadgcf
+        lyra = unison
 
     if callable(lyra) and not len(args):
         print("\n\t {} key [key [...]]\n".format(hold))
