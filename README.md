@@ -10,9 +10,25 @@ Paleontology
 ---
 
 ### Usage
-command line
+Command-line
 
-    python -B laurel.py | less
+    cd bonzosaurous/ 
+
+:
+
+    python3 -B laurel.py 
+
+:
+
+    python3 -B laurel.py n0 j3 
+
+:
+
+    python3 -B laurel.py cgdae j3 j36 j236 
+
+:
+
+    python3 -B laurel.py eadgbe gamut 
 
 ---
 
