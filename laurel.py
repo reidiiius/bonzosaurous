@@ -5,14 +5,24 @@ from parnassus import *
 
 import re
 import sys
+import os.path
+
 
 args = sys.argv
+
 lyra = beadgcf
+
+pate = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I)
+
+
+def validated(sign):
+  flag = pate.match(sign) and omphalos.get(sign)
+  return flag
 
 
 def fabricate():
     for sign in args:
-        if omphalos.get(sign):
+        if validated(sign):
             print('')
             lyra(sign)
         else:
@@ -21,9 +31,10 @@ def fabricate():
 
 
 def chalkboard():
+    named = os.path.basename(sys.executable)
     accum = str()
     count = 0
-    for sign in sorted(omphalos.keys()):
+    for sign in baetylus:
         accum = accum + "\t{}".format(sign)
         count = count + 1
         if count % 7 == 0:
@@ -33,48 +44,54 @@ def chalkboard():
     print("Tunings:")
     print("\tbeadgcf bfbfb cgdae eadgbe fkbjdn\n")
     print("Example:")
-    print("\tpython3 -B {} eadgbe n0 k6 j3 j6 j2\n".format(args[0]))
+    print("\t{} -B {} eadgbe n0 k6 j3 j6 j2\n".format(named, args[0]))
 
 
 if len(args) > 1:
-    dump = args.pop(0)
+    hold = args.pop(0)
     head = args[0]
 
     if 'a4' in head:
         lyra = bfbfb
-        dump = args.pop(0)
+        hold = args.pop(0)
     elif 'adgb' in head:
         lyra = eadgbe
-        dump = args.pop(0)
+        hold = args.pop(0)
     elif 'bfb' in head:
         lyra = bfbfb
-        dump = args.pop(0)
+        hold = args.pop(0)
     elif 'cgda' in head:
         lyra = cgdae
-        dump = args.pop(0)
+        hold = args.pop(0)
+    elif 'dadg' in head:
+        lyra = dadgad
+        hold = args.pop(0)
+    elif 'dgdg' in head:
+        lyra = dgdgbd
+        hold = args.pop(0)
     elif 'eadg' in head:
         lyra = beadgcf
-        dump = args.pop(0)
-    elif 'gdae' in head:
-        lyra = cgdae
-        dump = args.pop(0)
+        hold = args.pop(0)
     elif 'fkbj' in head:
         lyra = fkbjdn
-        dump = args.pop(0)
-    elif 'p4' in head:
-        lyra = beadgcf
-        dump = args.pop(0)
-    elif 'p5' in head:
+        hold = args.pop(0)
+    elif 'gdae' in head:
         lyra = cgdae
-        dump = args.pop(0)
+        hold = args.pop(0)
     elif 'm3' in head:
         lyra = fkbjdn
-        dump = args.pop(0)
+        hold = args.pop(0)
+    elif 'p4' in head:
+        lyra = beadgcf
+        hold = args.pop(0)
+    elif 'p5' in head:
+        lyra = cgdae
+        hold = args.pop(0)
     else:
         lyra = beadgcf
 
     if callable(lyra) and not len(args):
-        print("\n\t {} [key [key [...]]]\n".format(dump))
+        print("\n\t {} key [key [...]]\n".format(hold))
     elif callable(lyra) and args[0] == 'gamut':
         pleistos(lyra)
     else:

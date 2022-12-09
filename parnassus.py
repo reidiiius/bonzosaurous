@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#! /usr/bin/env python3
 
 from time import time
 from phaedriades import omphalos
@@ -8,110 +8,151 @@ baetylus = sorted(omphalos.keys())
 
 chronozoic = '-v' + str(time())
 
+toggle = True
+
+
+def transit(cord):
+    mets = ['__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu']
+    alps = ['_', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',]
+    if toggle:
+        wire = str(cord)
+        for ndx in range(0, 13):
+            wire = wire.replace(mets[ndx], alps[ndx])
+        return wire
+    else:
+        return cord
+
 
 def Bj(sign):
-    return omphalos[sign][50:] + omphalos[sign][:50]
+    return transit(omphalos[sign][50:] + omphalos[sign][:50])
 
 
 def Fn(sign):
-    return omphalos[sign][25:] + omphalos[sign][:25]
+    return transit(omphalos[sign][25:] + omphalos[sign][:25])
 
 
 def Cn(sign):
-    return omphalos[sign][:]
+    return transit(omphalos[sign][:])
 
 
 def Gn(sign):
-    return omphalos[sign][35:] + omphalos[sign][:35]
+    return transit(omphalos[sign][35:] + omphalos[sign][:35])
 
 
 def Dn(sign):
-    return omphalos[sign][10:] + omphalos[sign][:10]
+    return transit(omphalos[sign][10:] + omphalos[sign][:10])
 
 
 def An(sign):
-    return omphalos[sign][45:] + omphalos[sign][:45]
+    return transit(omphalos[sign][45:] + omphalos[sign][:45])
 
 
 def En(sign):
-    return omphalos[sign][20:] + omphalos[sign][:20]
+    return transit(omphalos[sign][20:] + omphalos[sign][:20])
 
 
 def Bn(sign):
-    return omphalos[sign][55:] + omphalos[sign][:55]
+    return transit(omphalos[sign][55:] + omphalos[sign][:55])
 
 
 def Fk(sign):
-    return omphalos[sign][30:] + omphalos[sign][:30]
+    return transit(omphalos[sign][30:] + omphalos[sign][:30])
+
+
+def layout(sign, tuned, pegbox):
+    print("\t" + sign + '-' + tuned + chronozoic)
+    for diter in range(0, len(pegbox)):
+        print("\t" + pegbox[diter])
 
 
 def beadgcf(sign):
-    print("\t" + sign + '-beadgcf' + chronozoic)
-    print("\t" + Fn(sign))
-    print("\t" + Cn(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Dn(sign))
-    print("\t" + An(sign))
-    print("\t" + En(sign))
-    print("\t" + Bn(sign))
+    tuned = 'beadgcf'
+    pegbox = [
+        Fn(sign),
+        Cn(sign),
+        Gn(sign),
+        Dn(sign),
+        An(sign),
+        En(sign),
+        Bn(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def bfbfb(sign):
-    print("\t" + sign + '-bfbfb' + chronozoic)
-    print("\t" + Bn(sign))
-    print("\t" + Fn(sign))
-    print("\t" + Bn(sign))
-    print("\t" + Fn(sign))
-    print("\t" + Bn(sign))
+    tuned = 'bfbfb'
+    pegbox = [
+        Bn(sign),
+        Fn(sign),
+        Bn(sign),
+        Fn(sign),
+        Bn(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def cgdae(sign):
-    print("\t" + sign + '-cgdae' + chronozoic)
-    print("\t" + En(sign))
-    print("\t" + An(sign))
-    print("\t" + Dn(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Cn(sign))
+    tuned = 'cgdae'
+    pegbox = [
+        En(sign),
+        An(sign),
+        Dn(sign),
+        Gn(sign),
+        Cn(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def dadgad(sign):
-    print("\t" + sign + '-dadgad' + chronozoic)
-    print("\t" + Dn(sign))
-    print("\t" + An(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Dn(sign))
-    print("\t" + An(sign))
-    print("\t" + Dn(sign))
+    tuned = 'dadgad'
+    pegbox = [
+        Dn(sign),
+        An(sign),
+        Gn(sign),
+        Dn(sign),
+        An(sign),
+        Dn(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def dgdgbd(sign):
-    print("\t" + sign + '-dgdgbd' + chronozoic)
-    print("\t" + Dn(sign))
-    print("\t" + Bn(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Dn(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Dn(sign))
+    tuned = 'dgdgbd'
+    pegbox = [
+        Dn(sign),
+        Bn(sign),
+        Gn(sign),
+        Dn(sign),
+        Gn(sign),
+        Dn(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def eadgbe(sign):
-    print("\t" + sign + '-eadgbe' + chronozoic)
-    print("\t" + En(sign))
-    print("\t" + Bn(sign))
-    print("\t" + Gn(sign))
-    print("\t" + Dn(sign))
-    print("\t" + An(sign))
-    print("\t" + En(sign))
+    tuned = 'eadgbe'
+    pegbox = [
+        En(sign),
+        Bn(sign),
+        Gn(sign),
+        Dn(sign),
+        An(sign),
+        En(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def fkbjdn(sign):
-    print("\t" + sign + '-fkbjdn' + chronozoic)
-    print("\t" + Dn(sign))
-    print("\t" + Bj(sign))
-    print("\t" + Fk(sign))
-    print("\t" + Dn(sign))
-    print("\t" + Bj(sign))
-    print("\t" + Fk(sign))
+    tuned = 'fkbjdn'
+    pegbox = [
+        Dn(sign),
+        Bj(sign),
+        Fk(sign),
+        Dn(sign),
+        Bj(sign),
+        Fk(sign),
+    ]
+    layout(sign, tuned, pegbox)
 
 
 def pleistos(lyra=eadgbe):
