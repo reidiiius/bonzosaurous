@@ -4,20 +4,22 @@ from time import time
 from phaedriades import omphalos
 
 
-baetylus = sorted(omphalos.keys())
-
-chronozoic = '-v' + str(time())
-
-toggle = True
+def obtain(item='toggle'):
+    bank = dict(
+      stones = sorted(omphalos.keys()),
+      chrono = '-v' + str(time()),
+      toggle = True,
+    )
+    return bank[item]
 
 
 def transit(cord):
     mets = ['__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu']
     alps = ['_', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',]
-    if toggle:
+    if obtain('toggle'):
         wire = str(cord)
-        for ndx in range(0, 13):
-            wire = wire.replace(mets[ndx], alps[ndx])
+        for old, new in zip(mets, alps):
+            wire = wire.replace(old, new)
         return wire
     else:
         return cord
@@ -60,7 +62,7 @@ def Fk(sign):
 
 
 def layout(sign, tuned, pegbox):
-    print("\t" + sign + '-' + tuned + chronozoic)
+    print("\t" + sign + '-' + tuned + obtain('chrono'))
     for ndx in range(0, len(pegbox)):
         print("\t" + pegbox[ndx])
 
@@ -166,7 +168,7 @@ def unison(sign):
 
 def pleistos(lyra=eadgbe):
     print('')
-    for sign in baetylus:
+    for sign in obtain('stones'):
         print('')
         lyra(sign)
         print('')
