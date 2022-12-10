@@ -8,101 +8,165 @@ import sys
 import os.path
 
 
+def govern(word):
+    most = 10
+    if len(word) > most:
+        word = word[0:most]
+
+    return word
+
+
 def validated(sign):
-  most = len(sign) < 10
   spat = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I)
-  flag = most and spat.match(sign) and sign in omphalos
+  flag = spat.match(sign) and sign in omphalos
   return flag
 
 
-def fabricate(lyra):
-    for sign in sys.argv:
+def fabricate(lyra, arts):
+    sign = str()
+    for word in arts:
+        sign = govern(word)
         if validated(sign):
             print('')
             lyra(sign)
         else:
             print("\n\t{} ?".format(sign))
     print('')
+    return None
 
 
-def chalkboard():
+def chalkboard(clefs):
     named = os.path.basename(sys.executable)
     accum = str()
     count = 0
-    for sign in obtain('stones'):
+    for sign in clefs:
         accum = accum + "\t{}".format(sign)
         count = count + 1
         if count % 7 == 0:
             accum = accum + "\n"
 
-    print("\n{}\n".format(accum))
-    print("Tunings:")
-    print("\tbeadgcf bfbfb cgdae dadgad dgdgbd eadgbe fkbjdn\n")
-    print("Example:")
-    print("\t{} -B {} eadgbe n0 k6 j3 j6 j2\n".format(named, sys.argv[0]))
+    print("\n{}".format(accum))
+    if count % 7 != 0: print('')
+
+    if len(sys.argv) == 1:
+        print("Tunings:")
+        print("\tbeadgcf bfbfb cgdae dadgad dgdgbd eadgbe fkbjdn\n")
+        print("Example:")
+        print("\t{} -B {} eadgbe n0 k6 j3 j6 j2\n".format(named, sys.argv[0]))
+
+    return None
+
+
+def greyhound(bone):
+    sack = list()
+    for (clef, cord) in obtain('couple'):
+        if obtain('toggle'):
+            cord = transit(cord)
+
+        if bone in cord:
+            sack.append(clef)
+
+    if len(sack) == 0:
+        sack.append("{} ?".format(bone))
+
+    return sack
+
+
+def wolfhound(bone):
+    sack = list()
+    for clef in obtain('stones'):
+        if bone in clef:
+            sack.append(clef)
+
+    if len(sack) == 0:
+        sack.append("{} ?".format(bone))
+
+    return sack
 
 
 def entryway():
+    arts = []
     if len(sys.argv) > len(obtain('stones')):
         print("Request denied!")
         sys.exit(0)
+    else:
+      arts = sys.argv[0:]
 
-    if len(sys.argv) > 1:
+    clave = 'i0'
+    if bool(omphalos) and clave not in omphalos:
+        omphalos[clave] = obtain('silent')
+
+    if len(arts) > 1:
         lyra = beadgcf
-        hold = sys.argv.pop(0)
-        head = sys.argv[0]
+        hold = govern(arts.pop(0))
+        head = govern(arts[0])
+
+        if 'group' in head and len(arts) > 1:
+            bone = govern(arts[1])
+            clefs = greyhound(bone)
+            chalkboard(clefs)
+            return None
+
+        if 'query' in head and len(arts) > 1:
+            bone = govern(arts[1])
+            clefs = wolfhound(bone)
+            chalkboard(clefs)
+            return None
 
         if 'a4' in head:
             lyra = bfbfb
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'adgb' in head:
             lyra = eadgbe
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'bfb' in head:
             lyra = bfbfb
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'cgda' in head:
             lyra = cgdae
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'dadg' in head:
             lyra = dadgad
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'dgdg' in head:
             lyra = dgdgbd
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'eadg' in head:
             lyra = beadgcf
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'fkbj' in head:
             lyra = fkbjdn
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'gdae' in head:
             lyra = cgdae
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'm3' in head:
             lyra = fkbjdn
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'p4' in head:
             lyra = beadgcf
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'p5' in head:
             lyra = cgdae
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         elif 'un' in head:
             lyra = unison
-            hold = sys.argv.pop(0)
+            hold = govern(arts.pop(0))
         else:
             lyra = unison
 
-        if callable(lyra) and not len(sys.argv):
+        if callable(lyra) and not len(arts):
             print("\n\t {} key [key [...]]\n".format(hold))
-        elif callable(lyra) and sys.argv[0] == 'gamut':
+        elif callable(lyra) and govern(arts[0]) == 'gamut':
             pleistos(lyra)
         else:
-            fabricate(lyra)
+            fabricate(lyra, arts)
 
     else:
-        chalkboard()
+        clefs = obtain('stones')
+        chalkboard(clefs)
+
+    return None
 
 
 entryway()

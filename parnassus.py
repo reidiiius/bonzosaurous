@@ -6,8 +6,10 @@ from phaedriades import omphalos
 
 def obtain(item='toggle'):
     bank = dict(
-      stones = sorted(omphalos.keys()),
       chrono = '-v' + str(time()),
+      couple = omphalos.items(),
+      silent = str("____ " * 12),
+      stones = sorted(omphalos.keys()),
       toggle = True,
     )
     return bank[item]

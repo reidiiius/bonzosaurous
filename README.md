@@ -20,7 +20,15 @@ Command-line
 
 :
 
-    python3 -B laurel.py n0 j3
+    python3 -B laurel.py query k5
+
+:
+
+    python3 -B laurel.py group vu
+
+:
+
+    python3 -B laurel.py n0 k1 k5 k15
 
 :
 
