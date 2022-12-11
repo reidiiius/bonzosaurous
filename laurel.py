@@ -1,44 +1,29 @@
 #! /usr/bin/env python3
 
-from phaedriades import omphalos
-from parnassus import *
-
-import re
 import sys
 import os.path
 
-
-def govern(word):
-    most = 10
-    if len(word) > most:
-        word = word[0:most]
-
-    return word
+from phaedriades import omphalos
+from parnassus import *
 
 
-def validated(sign):
-  spat = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I)
-  flag = spat.match(sign) and sign in omphalos
-  return flag
+def tutorial():
+    zithers = obtain('boards')
+    attuned = chr(32).join(zithers)
+    sorcery = os.path.basename(sys.executable)
+    profile = sys.argv[0]
+    instrum = zithers[5]
 
-
-def fabricate(lyra, arts):
-    sign = str()
-    for word in arts:
-        sign = govern(word)
-        if validated(sign):
-            print('')
-            lyra(sign)
-        else:
-            print("\n\t{} ?".format(sign))
-    print('')
+    print("Tunings:")
+    print("\t{}\n".format(attuned))
+    print("Example:")
+    print("\t{} -B {} {} n0 k6 j3 j6\n".format(sorcery, profile, instrum))
     return None
 
 
 def chalkboard(clefs):
-    named = os.path.basename(sys.executable)
     accum = str()
-    count = 0
+    count = int()
     for sign in clefs:
         accum = accum + "\t{}".format(sign)
         count = count + 1
@@ -49,39 +34,8 @@ def chalkboard(clefs):
     if count % 7 != 0: print('')
 
     if len(sys.argv) == 1:
-        print("Tunings:")
-        print("\tbeadgcf bfbfb cgdae dadgad dgdgbd eadgbe fkbjdn\n")
-        print("Example:")
-        print("\t{} -B {} eadgbe n0 k6 j3 j6 j2\n".format(named, sys.argv[0]))
-
+        tutorial()
     return None
-
-
-def greyhound(bone):
-    sack = list()
-    for (clef, cord) in obtain('couple'):
-        if obtain('toggle'):
-            cord = transit(cord)
-
-        if bone in cord:
-            sack.append(clef)
-
-    if len(sack) == 0:
-        sack.append("{} ?".format(bone))
-
-    return sack
-
-
-def wolfhound(bone):
-    sack = list()
-    for clef in obtain('stones'):
-        if bone in clef:
-            sack.append(clef)
-
-    if len(sack) == 0:
-        sack.append("{} ?".format(bone))
-
-    return sack
 
 
 def entryway():
@@ -142,7 +96,6 @@ def entryway():
     else:
         clefs = obtain('stones')
         chalkboard(clefs)
-
     return None
 
 
