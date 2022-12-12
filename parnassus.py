@@ -19,12 +19,27 @@ def obtain(item='toggle'):
       models = [
         '_', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
       ],
-      regexp = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I),
+      resign = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I),
       silent = str("____ " * 12),
       stones = sorted(omphalos.keys()),
       toggle = True,
     )
     return bank[item]
+
+
+def chalkboard(clefs):
+    accum = str()
+    count = int()
+    for sign in clefs:
+        accum = accum + "\t{}".format(sign)
+        count = count + 1
+        if count % 7 == 0:
+            accum = accum + "\n"
+
+    print("\n{}".format(accum))
+    if count % 7 != 0:
+        print('')
+    return None
 
 
 def transit(cord):
@@ -50,7 +65,7 @@ def greyhound(bone):
 
     if len(sack) == 0:
         sack.append("{} ?".format(bone))
-    return sack
+    return sorted(sack)
 
 
 def wolfhound(bone):
@@ -253,12 +268,11 @@ def govern(word):
     most = 10
     if len(word) > most:
         word = word[0:most]
-
     return word
 
 
 def validated(sign):
-    spat = obtain('regexp')
+    spat = obtain('resign')
     flag = spat.match(sign) and sign in omphalos
     return flag
 

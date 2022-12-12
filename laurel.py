@@ -10,31 +10,23 @@ from parnassus import *
 def tutorial():
     zithers = obtain('boards')
     attuned = chr(32).join(zithers)
+    quartet = "\t{} -B {} {} {}\n"
     sorcery = os.path.basename(sys.executable)
     profile = sys.argv[0]
     instrum = zithers[5]
+    signets = 'n0 k6 j3 j6'
+    digraph = omphalos['j6'][0:4]
+
+    if obtain('toggle'):
+        digraph = transit(digraph)
 
     print("Tunings:")
     print("\t{}\n".format(attuned))
-    print("Example:")
-    print("\t{} -B {} {} n0 k6 j3 j6\n".format(sorcery, profile, instrum))
-    return None
+    print("Samples:")
+    print(quartet.format(sorcery, profile, instrum, signets))
+    print(quartet.format(sorcery, profile, 'group', digraph))
+    print(quartet.format(sorcery, profile, 'query', '56'))
 
-
-def chalkboard(clefs):
-    accum = str()
-    count = int()
-    for sign in clefs:
-        accum = accum + "\t{}".format(sign)
-        count = count + 1
-        if count % 7 == 0:
-            accum = accum + "\n"
-
-    print("\n{}".format(accum))
-    if count % 7 != 0: print('')
-
-    if len(sys.argv) == 1:
-        tutorial()
     return None
 
 
@@ -96,6 +88,9 @@ def entryway():
     else:
         clefs = obtain('stones')
         chalkboard(clefs)
+        if len(sys.argv) == 1:
+            tutorial()
+
     return None
 
 
