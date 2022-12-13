@@ -12,14 +12,14 @@ def obtain(item='toggle'):
         'beadgcf','bfbfb','cgdae','dadgad','dgdgbd','eadgbe','fkbjdn','unison'
       ],
       chrono = '-i' + format(time.time(), '14.3f'),
-      dyadic = omphalos.items(),
+      dyadic = list(omphalos.items()),
       metals = [
         '__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu'
       ],
       models = [
         '_', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
       ],
-      resign = re.compile('^([ijkn]+\d+)+([lm]\d+)?h?$', re.I),
+      resign = '^([ijkn]+\d+)+([lm]\d+)?h?$',
       silent = str("____ " * 12),
       stones = sorted(omphalos.keys()),
       toggle = True,
@@ -273,7 +273,7 @@ def govern(word):
 
 def validated(sign):
     spat = obtain('resign')
-    flag = spat.match(sign) and sign in omphalos
+    flag = re.match(spat, sign) and sign in omphalos
     return flag
 
 

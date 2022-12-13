@@ -19,14 +19,25 @@ def wiretap(word, numb):
 
 
 def scrutinize():
+    errata = []
+    passed = 0
+    failed = 0
+
+    # compose umbworld
+    boards = obtain('boards')
+    tuning = boards[0]
+
+    chrono = obtain('chrono')
+    dyadic = obtain('dyadic')
+    metals = obtain('metals')
+    models = obtain('models')
+    resign = obtain('resign')
+    silent = obtain('silent')
+    stones = obtain('stones')
+    toggle = obtain('toggle')
+
     sign = 'j3k56m4'
     cord = omphalos[sign]
-    clefs = obtain('stones')
-    span = 0
-    bone = 'vu'
-    name = 'transit'
-    gear = 30
-    tuning = 'beadgcf'
     pegbox = [
       Bj(cord),
       Fn(cord),
@@ -38,16 +49,16 @@ def scrutinize():
       Bn(cord),
       Fk(cord),
     ]
-    word = sign
-    most = 10
+
+    bone = 'vu'
+    gear = 30
     lyra = beadgcf
-    arts = clefs
-    errata = []
-    passed = 0
-    failed = 0
+    most = 10
+    name = 'transit'
+    span = 0
 
     try:
-        assert type(obtain('toggle')) is type(bool()), "obtain('toggle') Boolean"
+        assert type(toggle) is type(bool()), "toggle is Boolean"
         passed += 1
     except:
         failed += 1
@@ -57,10 +68,67 @@ def scrutinize():
     if obtain('toggle'):
         span = 36
     else:
+        bone = 'HgAu'
         span = 60
 
     try:
-        assert chalkboard(clefs) is None, "chalkboard returns None"
+        assert type(boards) is type(list()), "boards is List"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert type(chrono) is type(str()), "chrono is String"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(dyadic, list), "dyadic instance List"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(metals, list), "metals instance List"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(models, list), "models instance List"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(resign, str), "resign instance String"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(silent, str), "silent instance String"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert isinstance(stones, list), "stones instance List"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
+        assert chalkboard(stones) is None, "chalkboard returns None"
         passed += 1
     except:
         failed += 1
@@ -239,7 +307,7 @@ def scrutinize():
 
     name = 'govern'
     try:
-        assert len(govern(word)) <= most, "{} limit <= {}".format(name, most)
+        assert len(govern(sign)) <= most, "{} limit <= {}".format(name, most)
         passed += 1
     except:
         failed += 1
@@ -253,7 +321,7 @@ def scrutinize():
         logist(errata, failed)
 
     try:
-        assert fabricate(lyra, arts) is None, "fabricate returns None"
+        assert fabricate(lyra, stones) is None, "fabricate returns None"
         passed += 1
     except:
         failed += 1
@@ -266,7 +334,7 @@ def scrutinize():
         failed += 1
         logist(errata, failed)
 
-    print('-' * 46)
+    print(chr(45) * 46)
     if len(errata):
         for numb, desc in enumerate(errata):
             print("anomaly[{}]: {}".format(numb+1, desc))
