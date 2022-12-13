@@ -50,36 +50,30 @@ def scrutinize():
       Fk(cord),
     ]
 
-    bone = 'vu'
+    bone = 'initiate'
     gear = 30
     lyra = beadgcf
     most = 10
-    name = 'transit'
+    name = 'initiate'
     span = 0
 
-    try:
-        assert type(toggle) is type(bool()), "toggle is Boolean"
-        passed += 1
-    except:
-        failed += 1
-        logist(errata, failed)
-
     # flip-flop
-    if obtain('toggle'):
+    if toggle:
+        bone = 'vu'
         span = 36
     else:
         bone = 'HgAu'
         span = 60
 
     try:
-        assert type(boards) is type(list()), "boards is List"
+        assert isinstance(boards, list), "boards instance List"
         passed += 1
     except:
         failed += 1
         logist(errata, failed)
 
     try:
-        assert type(chrono) is type(str()), "chrono is String"
+        assert isinstance(chrono, str), "chrono instance String"
         passed += 1
     except:
         failed += 1
@@ -128,12 +122,20 @@ def scrutinize():
         logist(errata, failed)
 
     try:
+        assert isinstance(toggle, bool), "toggle instance Boolean"
+        passed += 1
+    except:
+        failed += 1
+        logist(errata, failed)
+
+    try:
         assert chalkboard(stones) is None, "chalkboard returns None"
         passed += 1
     except:
         failed += 1
         logist(errata, failed)
 
+    name = 'transit'
     try:
         assert len(transit(cord)) is span, wiretap(name, span)
         passed += 1
@@ -142,7 +144,7 @@ def scrutinize():
         logist(errata, failed)
 
     try:
-        assert type(greyhound(bone)) is type(list()), "greyhound returns List"
+        assert isinstance(greyhound(bone), list), "greyhound returns List"
         passed += 1
     except:
         failed += 1
@@ -150,14 +152,14 @@ def scrutinize():
 
     bone = '56'
     try:
-        assert type(wolfhound(bone)) is type(list()), "wolfhound returns List"
+        assert isinstance(wolfhound(bone), list), "wolfhound returns List"
         passed += 1
     except:
         failed += 1
         logist(errata, failed)
 
     # flip-flop
-    if obtain('toggle'):
+    if toggle:
         span = 38
     else:
         span = 64
@@ -314,7 +316,7 @@ def scrutinize():
         logist(errata, failed)
 
     try:
-        assert type(validated(sign)) is type(bool()), "validate returns Boolean"
+        assert isinstance(validated(sign), bool), "validate returns Boolean"
         passed += 1
     except:
         failed += 1
