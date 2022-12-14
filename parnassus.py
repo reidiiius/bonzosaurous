@@ -8,17 +8,17 @@ from phaedriades import omphalos
 
 def obtain(item='toggle'):
     bank = dict(
-      boards = [
+      boards = (
         'beadgcf','bfbfb','cgdae','dadgad','dgdgbd','eadgbe','fkbjdn','unison'
-      ],
+      ),
       chrono = '-i' + format(time.time(), '14.3f'),
       dyadic = list(omphalos.items()),
-      metals = [
+      metals = (
         '__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu'
-      ],
-      models = [
+      ),
+      models = (
         '_', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-      ],
+      ),
       resign = '^([ijkn]+\d+)+([lm]\d+)?h?$',
       silent = str("____ " * 12),
       stones = sorted(omphalos.keys()),
