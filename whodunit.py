@@ -66,71 +66,32 @@ def databank(vc):
     stones = obtain('stones')
     toggle = obtain('toggle')
 
-    try:
-        assert isinstance(boards, tuple), "boards instance Tuple"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
+    for kind in (boards, metals, models):
+        try:
+            assert isinstance(kind, tuple), "instance not Tuple"
+            vc.passed += 1
+        except:
+            vc.failed += 1
+            logist(vc.errata, vc.failed)
+
+    for kind in (dyadic, stones):
+        try:
+            assert isinstance(kind, list), "instance not List"
+            vc.passed += 1
+        except:
+            vc.failed += 1
+            logist(vc.errata, vc.failed)
+
+    for kind in (chrono, resign, silent):
+        try:
+            assert isinstance(kind, str), "instance not String"
+            vc.passed += 1
+        except:
+            vc.failed += 1
+            logist(vc.errata, vc.failed)
 
     try:
-        assert isinstance(chrono, str), "chrono instance String"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(dyadic, list), "dyadic instance List"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(metals, tuple), "metals instance Tuple"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(models, tuple), "models instance Tuple"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(resign, str), "resign instance String"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(silent, str), "silent instance String"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(stones, list), "stones instance List"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert isinstance(toggle, bool), "toggle instance Boolean"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    try:
-        assert chalkboard(stones) is None, "chalkboard returns None"
+        assert isinstance(toggle, bool), "instance not Boolean"
         vc.passed += 1
     except:
         vc.failed += 1
@@ -267,72 +228,29 @@ def screenplay(vc):
     return None
 
 
-def instrument(vc):
-    sign = 'j3k56m4'
+def matrices(vc):
+    sign = 'n0'
     cord = omphalos[sign]
 
-    try:
-        assert beadgcf(sign, cord) is None, "beadgcf returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
+    tuners = (
+      beadgcf,
+      bfbfb,
+      cgdae,
+      dadgad,
+      dgdgbd,
+      eadgbe,
+      fkbjdn,
+      unison,
+    )
 
-    print('')
-    try:
-        assert bfbfb(sign, cord) is None, "bfbfb returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert cgdae(sign, cord) is None, "cgdae returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert dadgad(sign, cord) is None, "dadgad returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert dgdgbd(sign, cord) is None, "dgdgbd returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert eadgbe(sign, cord) is None, "eadgbe returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert fkbjdn(sign, cord) is None, "fkbjdn returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    print('')
-    try:
-        assert unison(sign, cord) is None, "unison returns None"
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
+    for grid in tuners:
+        try:
+            assert grid(sign, cord) is None, "{} -> None".format(grid.__name__)
+            vc.passed += 1
+        except:
+            vc.failed += 1
+            logist(vc.errata, vc.failed)
+        print('')
 
     return None
 
@@ -360,8 +278,8 @@ def sentinel(vc):
 
 def signatory(vc):
     stones = obtain('stones')
-    lyra = fkbjdn
 
+    lyra = fkbjdn
     try:
         assert fabricate(lyra, stones) is None, "fabricate returns None"
         vc.passed += 1
@@ -372,6 +290,13 @@ def signatory(vc):
     lyra = beadgcf
     try:
         assert pleistos(lyra) is None, "pleistos returns None"
+        vc.passed += 1
+    except:
+        vc.failed += 1
+        logist(vc.errata, vc.failed)
+
+    try:
+        assert chalkboard(stones) is None, "chalkboard returns None"
         vc.passed += 1
     except:
         vc.failed += 1
@@ -391,9 +316,9 @@ def scrutinize():
     print("\t\t{}\n".format(desc.upper()))
     sentinel(vc)
 
-    desc = 'instrument test'
+    desc = 'matrices test'
     print("\t\t{}\n".format(desc.upper()))
-    instrument(vc)
+    matrices(vc)
 
     desc = 'screenplay test'
     print("\n\t\t{}\n".format(desc.upper()))
