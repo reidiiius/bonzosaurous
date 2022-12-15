@@ -6,19 +6,40 @@ from phaedriades import omphalos
 from parnassus import *
 
 
-class VariCap:
-    errata = []
-    passed = 0
-    failed = 0
+class WhoDunit:
+    def __init__(o, errata, passed, failed):
+        o.errata = errata
+        o.passed = passed
+        o.failed = failed
+
+
+    def __str__(o):
+        stats = "Passed: {}, Failed: {}".format(o.passed, o.failed)
+        return stats
+
+
+class VariCap(WhoDunit):
+    def __init__(o, errata, passed, failed):
+        WhoDunit.__init__(o, errata, passed, failed)
+
+
+    def itemize(o):
+        errors = tuple(enumerate(o.errata))
+        return errors
+
+
+    def summed(o):
+        amount = int(o.passed + o.failed)
+        return amount
 
 
 def audition(vc):
-    print("\n{}".format(chr(45) * 46))
+    print("\n{}".format(chr(45) * 53))
     if len(vc.errata):
-        for numb, desc in enumerate(vc.errata):
+        for numb, desc in vc.itemize():
             print("anomaly[{}]: {}".format(numb+1, desc))
 
-    print("\n\t[ Passed: {}, Failed: {} ]\n".format(vc.passed, vc.failed))
+    print("\n\t[ Tested: {}, {} ]\n".format(vc.summed(), vc))
     return None
 
 
@@ -30,7 +51,7 @@ def logist(arrows, amount):
 
 
 def wiretap(word, numb):
-    stout = "{} returns string length {}".format(word, numb)
+    stout = "{} length {}".format(word, numb)
     return stout
 
 
@@ -176,10 +197,21 @@ def pitchfork(vc):
 
     sign = 'j3'
     cord = omphalos[sign]
+    pegbox = [
+      Bj(cord),
+      Fn(cord),
+      Cn(cord),
+      Gn(cord),
+      Dn(cord),
+      An(cord),
+      En(cord),
+      Bn(cord),
+      Fk(cord),
+    ]
 
-    gear = 30
-    name = None
     span = 0
+    gear = 30
+    wire = machine(cord, gear)
 
     # flip-flop
     if toggle:
@@ -187,85 +219,22 @@ def pitchfork(vc):
     else:
         span = 64
 
-    name = 'machine'
+    desc = 'machine -> '
     try:
-        assert len(machine(cord, gear)) is span, wiretap(name, span) 
+        assert len(wire) == span, wiretap(desc + wire, span)
         vc.passed += 1
     except:
         vc.failed += 1
         logist(vc.errata, vc.failed)
 
-    name = 'Bj'
-    try:
-        assert len(Bj(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Fn'
-    try:
-        assert len(Fn(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Cn'
-    try:
-        assert len(Cn(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Gn'
-    try:
-        assert len(Gn(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Dn'
-    try:
-        assert len(Dn(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'An'
-    try:
-        assert len(An(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'En'
-    try:
-        assert len(En(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Bn'
-    try:
-        assert len(Bn(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
-
-    name = 'Fk'
-    try:
-        assert len(Fk(cord)) is span, wiretap(name, span)
-        vc.passed += 1
-    except:
-        vc.failed += 1
-        logist(vc.errata, vc.failed)
+    desc = 'twine -> '
+    for yarn in pegbox:
+        try:
+            assert len(yarn) == span, wiretap(desc + yarn, span)
+            vc.passed += 1
+        except:
+            vc.failed += 1
+            logist(vc.errata, vc.failed)
 
     return None
 
@@ -411,7 +380,9 @@ def signatory(vc):
     return None
 
 
-def scrutinize(vc):
+def scrutinize():
+    vc = VariCap(list(), int(), int())
+
     desc = 'signatory test'
     print("\n\t\t{}".format(desc.upper()))
     signatory(vc)
@@ -450,6 +421,6 @@ def scrutinize(vc):
     return None
 
 
-scrutinize(VariCap)
+scrutinize()
 
 
