@@ -1,8 +1,5 @@
 #! /usr/bin/env python3
 
-from sys import exc_info
-
-from phaedriades import omphalos
 from parnassus import *
 
 
@@ -13,14 +10,10 @@ class WhoDunit:
         o.failed = failed
 
 
-    def __str__(o):
-        stats = "Passed: {}, Failed: {}".format(o.passed, o.failed)
-        return stats
-
-
-class VariCap(WhoDunit):
-    def __init__(o, errata, passed, failed):
-        WhoDunit.__init__(o, errata, passed, failed)
+    def logist(o, anomaly):
+        straw = "\nanomaly[{}]: {}\n"
+        o.errata.append(anomaly)
+        return straw.format(o.failed, anomaly)
 
 
     def itemize(o):
@@ -33,21 +26,30 @@ class VariCap(WhoDunit):
         return amount
 
 
-def audition(vc):
-    print("\n{}".format(chr(45) * 53))
-    if len(vc.errata):
-        for numb, desc in vc.itemize():
-            print("anomaly[{}]: {}".format(numb+1, desc))
-
-    print("\n\t[ Tested: {}, {} ]\n".format(vc.summed(), vc))
-    return None
+    def __str__(o):
+        straw = "Tested: {}, Passed: {}, Failed: {}"
+        stats = straw.format(o.summed(), o.passed, o.failed)
+        return stats
 
 
-def logist(arrows, amount):
-    gnosis = exc_info()
-    arrows.append(gnosis[1])
-    print("\nanomaly[{}]: {}\n".format(amount, gnosis[1]))
-    return None
+class VariCap(WhoDunit):
+    def __init__(o, errata, passed, failed):
+        WhoDunit.__init__(o, errata, passed, failed)
+
+
+    def audition(o):
+        print("\n{}".format(chr(45) * 53))
+        if hasattr(o, 'errata') and len(o.errata):
+            straw = "anomaly[{}]: {}"
+            if callable(o.itemize):
+                for numb, desc in o.itemize():
+                    print(straw.format(numb + 1, desc))
+            else:
+                for desc in tuple(o.errata):
+                    print(straw.format('?', desc))
+
+        print("\n\t[ {} ]\n".format(o))
+        return None
 
 
 def wiretap(word, numb):
@@ -68,34 +70,34 @@ def databank(vc):
 
     for kind in (boards, metals, models):
         try:
-            assert isinstance(kind, tuple), "instance not Tuple"
+            assert isinstance(kind, tuple), "instance Tuple"
             vc.passed += 1
-        except:
+        except Exception as anomaly:
             vc.failed += 1
-            logist(vc.errata, vc.failed)
+            print(vc.logist(anomaly))
 
     for kind in (dyadic, stones):
         try:
-            assert isinstance(kind, list), "instance not List"
+            assert isinstance(kind, list), "instance List"
             vc.passed += 1
-        except:
+        except Exception as anomaly:
             vc.failed += 1
-            logist(vc.errata, vc.failed)
+            print(vc.logist(anomaly))
 
     for kind in (chrono, resign, silent):
         try:
-            assert isinstance(kind, str), "instance not String"
+            assert isinstance(kind, str), "instance String"
             vc.passed += 1
-        except:
+        except Exception as anomaly:
             vc.failed += 1
-            logist(vc.errata, vc.failed)
+            print(vc.logist(anomaly))
 
     try:
-        assert isinstance(toggle, bool), "instance not Boolean"
+        assert isinstance(toggle, bool), "instance Boolean"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -118,9 +120,9 @@ def polygraph(vc):
     try:
         assert len(transit(cord)) is span, wiretap(name, span)
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -138,17 +140,17 @@ def laelaps(vc):
     try:
         assert isinstance(greyhound(bone), list), "greyhound returns List"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     bone = '56'
     try:
         assert isinstance(wolfhound(bone), list), "wolfhound returns List"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -184,18 +186,18 @@ def pitchfork(vc):
     try:
         assert len(wire) == span, wiretap(desc + wire, span)
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     desc = 'twine -> '
     for yarn in pegbox:
         try:
             assert len(yarn) == span, wiretap(desc + yarn, span)
             vc.passed += 1
-        except:
+        except Exception as anomaly:
             vc.failed += 1
-            logist(vc.errata, vc.failed)
+            print(vc.logist(anomaly))
 
     return None
 
@@ -221,9 +223,9 @@ def screenplay(vc):
     try:
         assert layout(sign, tuning, pegbox) is None, "layout returns None"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -247,31 +249,32 @@ def matrices(vc):
         try:
             assert grid(sign, cord) is None, "{} -> None".format(grid.__name__)
             vc.passed += 1
-        except:
+        except Exception as anomaly:
             vc.failed += 1
-            logist(vc.errata, vc.failed)
+            print(vc.logist(anomaly))
         print('')
 
     return None
 
 
 def sentinel(vc):
-    sign = 'j3k56m4'
+    sign = '0123456789ABCDEF'
     most = 10
 
     try:
         assert len(govern(sign)) <= most, "govern limit <= {}".format(most)
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
+    sign = 'j3k56m4'
     try:
         assert isinstance(validated(sign), bool), "validate returns Boolean"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -283,24 +286,24 @@ def signatory(vc):
     try:
         assert fabricate(lyra, stones) is None, "fabricate returns None"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     lyra = beadgcf
     try:
         assert pleistos(lyra) is None, "pleistos returns None"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     try:
         assert chalkboard(stones) is None, "chalkboard returns None"
         vc.passed += 1
-    except:
+    except Exception as anomaly:
         vc.failed += 1
-        logist(vc.errata, vc.failed)
+        print(vc.logist(anomaly))
 
     return None
 
@@ -341,7 +344,7 @@ def scrutinize():
     databank(vc)
 
     # printout results
-    audition(vc)
+    vc.audition()
 
     return None
 
