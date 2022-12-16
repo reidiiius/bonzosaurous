@@ -3,16 +3,56 @@
 import sys
 import os.path
 
-from phaedriades import omphalos
 from parnassus import *
 
 
-def tutorial():
+def samples():
+    clerk = "\tlaurel.entryway()\n"
+    batch = "\tlaurel.sys.argv = [None, {}]\n"
+    lines = [
+      "\n\t\t{}".format(__name__.upper()),
+      "Samples:\n",
+      "\tlaurel.samples()\n",
+      clerk,
+      batch.format("'beadgcf', 'n0', 'j3'"),
+      clerk,
+      batch.format("'group', 'tv'"),
+      clerk,
+      batch.format("'beadgcf', 'j3', 'k1'"),
+      clerk,
+      batch.format("'query', 'k1'"),
+      clerk,
+      batch.format("'cgdae', 'k1', 'k12', 'k125'"),
+      clerk,
+      batch.format(""),
+      clerk,
+    ]
+    for stout in lines:
+        print(stout)
+
+    print("\tguitar = laurel.eadgbe\n")
+    print("\tlaurel.fabricate(guitar, ['n0', 'k6'])\n")
+    print("\ttonics = laurel.greyhound('rw')\n")
+    print("\tlaurel.chalkboard(tonics)\n")
+    print("\tsignet = laurel.wolfhound('j5')\n")
+    print("\tlaurel.chalkboard(signet)\n")
+
+    return None
+
+
+def choices():
     zithers = obtain('boards')
     attuned = chr(32).join(zithers)
+    print("\t{}\n".format(attuned))
+
+    return None
+
+
+def tutorial():
     quartet = "\t{} -B {} {} {}\n"
     sorcery = os.path.basename(sys.executable)
     profile = sys.argv[0]
+    zithers = obtain('boards')
     instrum = zithers[5]
     signets = 'n0 k6 j3 j6'
     digraph = omphalos['j6'][0:4]
@@ -21,7 +61,7 @@ def tutorial():
         digraph = transit(digraph)
 
     print("Tunings:")
-    print("\t{}\n".format(attuned))
+    choices()
     print("Samples:")
     print(quartet.format(sorcery, profile, instrum, signets))
     print(quartet.format(sorcery, profile, 'group', digraph))
@@ -89,11 +129,17 @@ def entryway():
         clefs = obtain('stones')
         chalkboard(clefs)
         if len(sys.argv) == 1:
-            tutorial()
+            if __name__ == '__main__':
+                tutorial()
+            else:
+                choices()
 
     return None
 
 
-entryway()
+if __name__ == '__main__':
+    entryway()
+else:
+    samples()
 
 

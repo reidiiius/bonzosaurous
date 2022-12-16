@@ -349,6 +349,11 @@ def scrutinize():
     return None
 
 
-scrutinize()
+if __name__ == '__main__':
+    scrutinize()
+else:
+    print("\n\t\t{}".format(__name__.upper()))
+    print("Sample:\n")
+    print("\twhodunit.scrutinize()\n")
 
 
