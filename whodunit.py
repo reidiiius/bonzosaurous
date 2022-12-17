@@ -68,17 +68,34 @@ def databank(vc):
     stones = obtain('stones')
     toggle = obtain('toggle')
 
-    for kind in (boards, metals, models):
+    unique = refined()
+
+    try:
+        assert len(unique) == 64, "refined 64 elementals"
+        vc.passed += 1
+    except Exception as anomaly:
+        vc.failed += 1
+        print(vc.logist(anomaly))
+
+    for kind in (dyadic, stones, unique):
         try:
-            assert isinstance(kind, tuple), "instance Tuple"
+            assert isinstance(kind, list), "instance List"
             vc.passed += 1
         except Exception as anomaly:
             vc.failed += 1
             print(vc.logist(anomaly))
 
-    for kind in (dyadic, stones):
+    for span in len(metals), len(models):
         try:
-            assert isinstance(kind, list), "instance List"
+            assert span == 13, "metals and models tridecal"
+            vc.passed += 1
+        except Exception as anomaly:
+            vc.failed += 1
+            print(vc.logist(anomaly))
+
+    for kind in (boards, metals, models):
+        try:
+            assert isinstance(kind, tuple), "instance Tuple"
             vc.passed += 1
         except Exception as anomaly:
             vc.failed += 1

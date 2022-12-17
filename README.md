@@ -20,6 +20,10 @@ Command-line
 
 :
 
+    python3 -B laurel.py tonal
+
+:
+
     python3 -B laurel.py query k5
 
 :

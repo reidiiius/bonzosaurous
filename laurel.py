@@ -9,6 +9,13 @@ from parnassus import *
 def samples():
     clerk = "\tlaurel.entryway()\n"
     batch = "\tlaurel.sys.argv = [None, {}]\n"
+    graph = str()
+
+    if obtain('toggle'):
+        graph = 'tv'
+    else:
+        graph = 'SnHg'
+
     lines = [
       "\n\t\t{}".format(__name__.upper()),
       "Samples:\n",
@@ -16,7 +23,7 @@ def samples():
       clerk,
       batch.format("'beadgcf', 'n0', 'j3'"),
       clerk,
-      batch.format("'group', 'tv'"),
+      batch.format("'group', '{}'".format(graph)),
       clerk,
       batch.format("'beadgcf', 'j3', 'k1'"),
       clerk,
@@ -24,15 +31,15 @@ def samples():
       clerk,
       batch.format("'cgdae', 'k1', 'k12', 'k125'"),
       clerk,
-      batch.format(""),
+      batch.format("'tonal'"),
       clerk,
     ]
     for stout in lines:
         print(stout)
 
     print("\tguitar = laurel.eadgbe\n")
-    print("\tlaurel.fabricate(guitar, ['n0', 'k6'])\n")
-    print("\ttonics = laurel.greyhound('rw')\n")
+    print("\tlaurel.fabricate(guitar, ['n0', 'k1'])\n")
+    print("\ttonics = laurel.greyhound('{}')\n".format(graph))
     print("\tlaurel.chalkboard(tonics)\n")
     print("\tsignet = laurel.wolfhound('j5')\n")
     print("\tlaurel.chalkboard(signet)\n")
@@ -66,6 +73,7 @@ def tutorial():
     print(quartet.format(sorcery, profile, instrum, signets))
     print(quartet.format(sorcery, profile, 'group', digraph))
     print(quartet.format(sorcery, profile, 'query', '56'))
+    print(quartet.format(sorcery, profile, 'tonal', str()))
 
     return None
 
@@ -86,6 +94,20 @@ def entryway():
     if len(arts):
         head = govern(arts[0])
         lyra = None
+
+        if head == 'tonal' and len(arts) == 1:
+            tones = refined()
+            uniqs = list()
+            hex5f = chr(95)
+            if obtain('toggle'):
+                uniqs = [
+                  transit(word) for word in tones if hex5f not in word
+                ]
+            else:
+                uniqs = [ word for word in tones if hex5f not in word ]
+
+            chalkboard(uniqs)
+            return None
 
         if head == 'group' and len(arts) > 1:
             bone = govern(arts[1])

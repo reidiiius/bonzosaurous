@@ -6,6 +6,15 @@ import time
 from phaedriades import omphalos
 
 
+def refined():
+    vessel = list()
+    for clef, cord in omphalos.items():
+        vessel.extend(cord.split())
+
+    assets = set(vessel)
+    return sorted(assets)
+
+
 def obtain(item='toggle'):
     bank = dict(
       boards = (
