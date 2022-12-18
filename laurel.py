@@ -7,25 +7,28 @@ from parnassus import *
 
 
 def samples():
-    trait = str()
+    """Interactive mode command examples."""
+    mnemo = __name__
+    stock = 'guitar'
+    chart = "\t{}.fabricate({}, {})\n"
+    lupus = "\t{} = {}.{}hound('{}')\n"
+    tafel = "\t{}.chalkboard({})\n"
+    trait = 'SnHg'
     if obtain('toggle'):
         trait = 'tv'
-    else:
-        trait = 'SnHg'
 
-    clerk = "\tlaurel.chalkboard({})\n"
     batch = [
-      "\n\t\t{}\n".format(__name__.upper()),
-      "\tlaurel.entryway()\n",
-      "\tguitar = laurel.eadgbe\n",
-      "\tlaurel.fabricate(guitar, ['n0', 'k1'])\n",
-      "\toccurs = laurel.greyhound('{}')\n".format(trait),
-      clerk.format('occurs'),
-      "\toccurs = laurel.wolfhound('j3')\n",
-      clerk.format('occurs'),
-      "\ttraits = laurel.refined()\n",
-      clerk.format('traits'),
-      "\tlaurel.samples()\n",
+      "\n\t\t{}\n".format(mnemo.upper()),
+      "\t{}.entryway()\n".format(mnemo),
+      "\t{} = {}.eadgbe\n".format(stock, mnemo),
+      chart.format(mnemo, stock, "['n0', 'k1']"),
+      lupus.format('occurs', mnemo, 'grey', trait),
+      tafel.format(mnemo, 'occurs'),
+      lupus.format('occurs', mnemo, 'wolf', 'j3'),
+      tafel.format(mnemo, 'occurs'),
+      "\t{} = {}.refined()\n".format('traits', mnemo),
+      tafel.format(mnemo, 'traits'),
+      "\t{}.samples()\n".format(mnemo),
     ]
     for stout in batch:
         print(stout)
@@ -33,18 +36,11 @@ def samples():
     return None
 
 
-def choices():
-    zithers = obtain('boards')
-    attuned = chr(32).join(zithers)
-    print("\t{}\n".format(attuned))
-
-    return None
-
-
 def tutorial():
+    """Script mode menu and command examples."""
     quartet = "\t{} -B {} {} {}\n"
     sorcery = os.path.basename(sys.executable)
-    profile = sys.argv[0]
+    profile = os.path.basename(sys.argv[0])
     zithers = obtain('boards')
     instrum = zithers[5]
     signets = 'n0 k6 j3 j6'
@@ -65,6 +61,7 @@ def tutorial():
 
 
 def entryway():
+    """Application entry point."""
     arts = list()
     clef = 'i0'
 

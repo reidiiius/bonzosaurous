@@ -7,6 +7,7 @@ from phaedriades import omphalos
 
 
 def refined():
+    """List of tonal inversion strings."""
     unique = list()
     vessel = list()
     for clef, cord in omphalos.items():
@@ -24,6 +25,7 @@ def refined():
 
 
 def obtain(item='toggle'):
+    """Dictionary of useful things."""
     bank = dict(
       boards = (
         'beadgcf','bfbfb','cgdae','dadgad','dgdgbd','eadgbe','fkbjdn','unison'
@@ -44,7 +46,17 @@ def obtain(item='toggle'):
     return bank[item]
 
 
+def choices():
+    """String of instrument tunings."""
+    zithers = obtain('boards')
+    attuned = chr(32).join(zithers)
+    print("\t{}\n".format(attuned))
+
+    return None
+
+
 def chalkboard(clefs):
+    """Tabulates given list."""
     accum = str()
     count = int()
     for sign in clefs:
@@ -60,6 +72,7 @@ def chalkboard(clefs):
 
 
 def transit(cord):
+    """Transcribes given string."""
     mets = obtain('metals')
     mods = obtain('models')
     if obtain('toggle'):
@@ -72,6 +85,7 @@ def transit(cord):
 
 
 def greyhound(bone):
+    """List of keys related by given tonality."""
     sack = list()
     for (clef, cord) in obtain('dyadic'):
         if obtain('toggle'):
@@ -86,6 +100,7 @@ def greyhound(bone):
 
 
 def wolfhound(bone):
+    """List of keys related by given signature."""
     sack = list()
     for clef in obtain('stones'):
         if bone in clef:
@@ -97,65 +112,76 @@ def wolfhound(bone):
 
 
 def machine(cord, gear):
+    """Slices given string using given integer index."""
     wire = transit(cord[gear:] + cord[:gear] + cord[gear:gear + 4])
     return wire
 
 
 def Bj(cord):
+    """Permute given string to B flat."""
     gear = 50
     yarn = machine(cord, gear)
     return yarn
 
 
 def Fn(cord):
+    """Permute given string to F natural."""
     gear = 25
     yarn = machine(cord, gear)
     return yarn
 
 
 def Cn(cord):
+    """Given string stays relative C natural."""
     gear = 0
     yarn = machine(cord, gear)
     return yarn
 
 
 def Gn(cord):
+    """Permute given string to G natural."""
     gear = 35
     yarn = machine(cord, gear)
     return yarn
 
 
 def Dn(cord):
+    """Permute given string to D natural."""
     gear = 10
     yarn = machine(cord, gear)
     return yarn
 
 
 def An(cord):
+    """Permute given string to A natural."""
     gear = 45
     yarn = machine(cord, gear)
     return yarn
 
 
 def En(cord):
+    """Permute given string to E natural."""
     gear = 20
     yarn = machine(cord, gear)
     return yarn
 
 
 def Bn(cord):
+    """Permute given string to B natural."""
     gear = 55
     yarn = machine(cord, gear)
     return yarn
 
 
 def Fk(cord):
+    """Permute given string to F sharp."""
     gear = 30
     yarn = machine(cord, gear)
     return yarn
 
 
 def layout(sign, tuning, pegbox):
+    """Printout headline and subsequent strings."""
     print("\t" + sign + '-' + tuning + obtain('chrono'))
     for yarn in pegbox:
         print("\t" + yarn)
@@ -163,6 +189,7 @@ def layout(sign, tuning, pegbox):
 
 
 def beadgcf(sign, cord):
+    """Perfect fourths tuning."""
     tuning = obtain('boards')[0]
     pegbox = [
         Fn(cord),
@@ -178,6 +205,7 @@ def beadgcf(sign, cord):
 
 
 def bfbfb(sign, cord):
+    """Tritones tuning."""
     tuning = obtain('boards')[1]
     saturn = Fn(cord)
     vulcan = Bn(cord)
@@ -193,6 +221,7 @@ def bfbfb(sign, cord):
 
 
 def cgdae(sign, cord):
+    """Perfect fifths tuning."""
     tuning = obtain('boards')[2]
     pegbox = [
         En(cord),
@@ -206,6 +235,7 @@ def cgdae(sign, cord):
 
 
 def dadgad(sign, cord):
+    """Celtic tuning."""
     tuning = obtain('boards')[3]
     apollo = Gn(cord)
     jovian = Dn(cord)
@@ -223,6 +253,7 @@ def dadgad(sign, cord):
 
 
 def dgdgbd(sign, cord):
+    """Open G tuning."""
     tuning = obtain('boards')[4]
     apollo = Gn(cord)
     jovian = Dn(cord)
@@ -241,6 +272,7 @@ def dgdgbd(sign, cord):
 
 
 def eadgbe(sign, cord):
+    """Guitar Standard tuning."""
     tuning = obtain('boards')[5]
     copper = En(cord)
     pegbox = [
@@ -256,6 +288,7 @@ def eadgbe(sign, cord):
 
 
 def fkbjdn(sign, cord):
+    """Major thirds tuning."""
     tuning = obtain('boards')[6]
     jovian = Dn(cord)
     aquari = Bj(cord)
@@ -273,6 +306,7 @@ def fkbjdn(sign, cord):
 
 
 def unison(sign, cord):
+    """Unison tuning."""
     tuning = obtain('boards')[7]
     pegbox = [
         Cn(cord),
@@ -282,6 +316,7 @@ def unison(sign, cord):
 
 
 def govern(word):
+    """Limit amount of characters in given word."""
     most = 10
     if len(word) > most:
         word = word[0:most]
@@ -289,12 +324,14 @@ def govern(word):
 
 
 def validated(sign):
+    """Compare given word against rational pattern."""
     spat = obtain('resign')
     flag = re.match(spat, sign) and sign in omphalos
     return flag
 
 
 def fabricate(lyra, arts):
+    """Printout given key list with given tuning function."""
     sign = str()
     cord = str()
     for word in arts:
@@ -310,6 +347,7 @@ def fabricate(lyra, arts):
 
 
 def pleistos(lyra=eadgbe):
+    """Printout all keys with given tuning function."""
     cord = str()
     print('')
     for sign in obtain('stones'):
