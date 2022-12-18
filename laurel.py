@@ -7,42 +7,28 @@ from parnassus import *
 
 
 def samples():
-    clerk = "\tlaurel.entryway()\n"
-    batch = "\tlaurel.sys.argv = [None, {}]\n"
-    graph = str()
-
+    trait = str()
     if obtain('toggle'):
-        graph = 'tv'
+        trait = 'tv'
     else:
-        graph = 'SnHg'
+        trait = 'SnHg'
 
-    lines = [
-      "\n\t\t{}".format(__name__.upper()),
-      "Samples:\n",
+    clerk = "\tlaurel.chalkboard({})\n"
+    batch = [
+      "\n\t\t{}\n".format(__name__.upper()),
+      "\tlaurel.entryway()\n",
+      "\tguitar = laurel.eadgbe\n",
+      "\tlaurel.fabricate(guitar, ['n0', 'k1'])\n",
+      "\toccurs = laurel.greyhound('{}')\n".format(trait),
+      clerk.format('occurs'),
+      "\toccurs = laurel.wolfhound('j3')\n",
+      clerk.format('occurs'),
+      "\ttraits = laurel.refined()\n",
+      clerk.format('traits'),
       "\tlaurel.samples()\n",
-      clerk,
-      batch.format("'beadgcf', 'n0', 'j3'"),
-      clerk,
-      batch.format("'group', '{}'".format(graph)),
-      clerk,
-      batch.format("'beadgcf', 'j3', 'k1'"),
-      clerk,
-      batch.format("'query', 'k1'"),
-      clerk,
-      batch.format("'cgdae', 'k1', 'k12', 'k125'"),
-      clerk,
-      batch.format("'tonal'"),
-      clerk,
     ]
-    for stout in lines:
+    for stout in batch:
         print(stout)
-
-    print("\tguitar = laurel.eadgbe\n")
-    print("\tlaurel.fabricate(guitar, ['n0', 'k1'])\n")
-    print("\ttonics = laurel.greyhound('{}')\n".format(graph))
-    print("\tlaurel.chalkboard(tonics)\n")
-    print("\tsignet = laurel.wolfhound('j5')\n")
-    print("\tlaurel.chalkboard(signet)\n")
 
     return None
 
@@ -97,16 +83,7 @@ def entryway():
 
         if head == 'tonal' and len(arts) == 1:
             tones = refined()
-            uniqs = list()
-            hex5f = chr(95)
-            if obtain('toggle'):
-                uniqs = [
-                  transit(word) for word in tones if hex5f not in word
-                ]
-            else:
-                uniqs = [ word for word in tones if hex5f not in word ]
-
-            chalkboard(uniqs)
+            chalkboard(tones)
             return None
 
         if head == 'group' and len(arts) > 1:

@@ -7,12 +7,20 @@ from phaedriades import omphalos
 
 
 def refined():
+    unique = list()
     vessel = list()
     for clef, cord in omphalos.items():
         vessel.extend(cord.split())
 
-    assets = set(vessel)
-    return sorted(assets)
+    assets = set(vessel); chex5f = chr(95)
+    if obtain('toggle'):
+        unique = [
+          transit(word) for word in assets if chex5f not in word
+        ]
+    else:
+        unique = [ word for word in assets if chex5f not in word ]
+
+    return sorted(unique)
 
 
 def obtain(item='toggle'):

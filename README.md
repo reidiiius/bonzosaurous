@@ -20,11 +20,7 @@ Command-line
 
 :
 
-    python3 -B laurel.py tonal
-
-:
-
-    python3 -B laurel.py query k5
+    python3 -B laurel.py eadgbe n0 j6
 
 :
 
@@ -32,11 +28,11 @@ Command-line
 
 :
 
-    python3 -B laurel.py n0 k1 k5 k15
+    python3 -B laurel.py query k5
 
 :
 
-    python3 -B laurel.py cgdae j3 j36 j236
+    python3 -B laurel.py tonal
 
 :
 

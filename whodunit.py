@@ -71,7 +71,7 @@ def databank(vc):
     unique = refined()
 
     try:
-        assert len(unique) == 64, "refined 64 elementals"
+        assert len(unique) == 63, "refined 63 elementals"
         vc.passed += 1
     except Exception as anomaly:
         vc.failed += 1
@@ -370,7 +370,7 @@ if __name__ == '__main__':
     scrutinize()
 else:
     print("\n\t\t{}".format(__name__.upper()))
-    print("Sample:\n")
+    print("Usage:\n")
     print("\twhodunit.scrutinize()\n")
 
 
