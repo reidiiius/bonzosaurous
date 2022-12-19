@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+"""Module laurel supplies interface routines to module parnassus."""
+
 import sys
 import os.path
 

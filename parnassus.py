@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+"""Module parnassus provides data and routines to model tonal inversions."""
+
 import re
 import time
 
@@ -117,63 +119,63 @@ def machine(cord, gear):
     return wire
 
 
-def Bj(cord):
+def sBj(cord):
     """Permute given string to B flat."""
     gear = 50
     yarn = machine(cord, gear)
     return yarn
 
 
-def Fn(cord):
+def sFn(cord):
     """Permute given string to F natural."""
     gear = 25
     yarn = machine(cord, gear)
     return yarn
 
 
-def Cn(cord):
+def sCn(cord):
     """Given string stays relative C natural."""
     gear = 0
     yarn = machine(cord, gear)
     return yarn
 
 
-def Gn(cord):
+def sGn(cord):
     """Permute given string to G natural."""
     gear = 35
     yarn = machine(cord, gear)
     return yarn
 
 
-def Dn(cord):
+def sDn(cord):
     """Permute given string to D natural."""
     gear = 10
     yarn = machine(cord, gear)
     return yarn
 
 
-def An(cord):
+def sAn(cord):
     """Permute given string to A natural."""
     gear = 45
     yarn = machine(cord, gear)
     return yarn
 
 
-def En(cord):
+def sEn(cord):
     """Permute given string to E natural."""
     gear = 20
     yarn = machine(cord, gear)
     return yarn
 
 
-def Bn(cord):
+def sBn(cord):
     """Permute given string to B natural."""
     gear = 55
     yarn = machine(cord, gear)
     return yarn
 
 
-def Fk(cord):
+def sFk(cord):
     """Permute given string to F sharp."""
     gear = 30
     yarn = machine(cord, gear)
@@ -192,13 +194,13 @@ def beadgcf(sign, cord):
     """Perfect fourths tuning."""
     tuning = obtain('boards')[0]
     pegbox = [
-        Fn(cord),
-        Cn(cord),
-        Gn(cord),
-        Dn(cord),
-        An(cord),
-        En(cord),
-        Bn(cord),
+        sFn(cord),
+        sCn(cord),
+        sGn(cord),
+        sDn(cord),
+        sAn(cord),
+        sEn(cord),
+        sBn(cord),
     ]
     layout(sign, tuning, pegbox)
     return None
@@ -207,8 +209,8 @@ def beadgcf(sign, cord):
 def bfbfb(sign, cord):
     """Tritones tuning."""
     tuning = obtain('boards')[1]
-    saturn = Fn(cord)
-    vulcan = Bn(cord)
+    saturn = sFn(cord)
+    vulcan = sBn(cord)
     pegbox = [
         vulcan,
         saturn,
@@ -224,11 +226,11 @@ def cgdae(sign, cord):
     """Perfect fifths tuning."""
     tuning = obtain('boards')[2]
     pegbox = [
-        En(cord),
-        An(cord),
-        Dn(cord),
-        Gn(cord),
-        Cn(cord),
+        sEn(cord),
+        sAn(cord),
+        sDn(cord),
+        sGn(cord),
+        sCn(cord),
     ]
     layout(sign, tuning, pegbox)
     return None
@@ -237,9 +239,9 @@ def cgdae(sign, cord):
 def dadgad(sign, cord):
     """Celtic tuning."""
     tuning = obtain('boards')[3]
-    apollo = Gn(cord)
-    jovian = Dn(cord)
-    silver = An(cord)
+    apollo = sGn(cord)
+    jovian = sDn(cord)
+    silver = sAn(cord)
     pegbox = [
         jovian,
         silver,
@@ -255,10 +257,10 @@ def dadgad(sign, cord):
 def dgdgbd(sign, cord):
     """Open G tuning."""
     tuning = obtain('boards')[4]
-    apollo = Gn(cord)
-    jovian = Dn(cord)
-    silver = An(cord)
-    vulcan = Bn(cord)
+    apollo = sGn(cord)
+    jovian = sDn(cord)
+    silver = sAn(cord)
+    vulcan = sBn(cord)
     pegbox = [
         jovian,
         vulcan,
@@ -274,13 +276,13 @@ def dgdgbd(sign, cord):
 def eadgbe(sign, cord):
     """Guitar Standard tuning."""
     tuning = obtain('boards')[5]
-    copper = En(cord)
+    copper = sEn(cord)
     pegbox = [
         copper,
-        Bn(cord),
-        Gn(cord),
-        Dn(cord),
-        An(cord),
+        sBn(cord),
+        sGn(cord),
+        sDn(cord),
+        sAn(cord),
         copper,
     ]
     layout(sign, tuning, pegbox)
@@ -290,9 +292,9 @@ def eadgbe(sign, cord):
 def fkbjdn(sign, cord):
     """Major thirds tuning."""
     tuning = obtain('boards')[6]
-    jovian = Dn(cord)
-    aquari = Bj(cord)
-    gemini = Fk(cord)
+    jovian = sDn(cord)
+    aquari = sBj(cord)
+    gemini = sFk(cord)
     pegbox = [
         jovian,
         aquari,
@@ -309,7 +311,7 @@ def unison(sign, cord):
     """Unison tuning."""
     tuning = obtain('boards')[7]
     pegbox = [
-        Cn(cord),
+        sCn(cord),
     ]
     layout(sign, tuning, pegbox)
     return None

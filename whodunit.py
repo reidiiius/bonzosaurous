@@ -1,54 +1,56 @@
 #! /usr/bin/env python3
 
+"""Module whodunit operates as a unit testing workbench."""
+
 from parnassus import *
 
 
 class WhoDunit:
-    def __init__(o, errata, passed, failed):
-        o.errata = errata
-        o.passed = passed
-        o.failed = failed
+    def __init__(self, errata, passed, failed):
+        self.errata = errata
+        self.passed = passed
+        self.failed = failed
 
 
-    def logist(o, anomaly):
+    def logist(self, anomaly):
         straw = "\nanomaly[{}]: {}\n"
-        o.errata.append(anomaly)
-        return straw.format(o.failed, anomaly)
+        self.errata.append(anomaly)
+        return straw.format(self.failed, anomaly)
 
 
-    def itemize(o):
-        errors = tuple(enumerate(o.errata))
+    def itemize(self):
+        errors = tuple(enumerate(self.errata))
         return errors
 
 
-    def summed(o):
-        amount = int(o.passed + o.failed)
+    def summed(self):
+        amount = int(self.passed + self.failed)
         return amount
 
 
-    def __str__(o):
+    def __str__(self):
         straw = "Tested: {}, Passed: {}, Failed: {}"
-        stats = straw.format(o.summed(), o.passed, o.failed)
+        stats = straw.format(self.summed(), self.passed, self.failed)
         return stats
 
 
 class VariCap(WhoDunit):
-    def __init__(o, errata, passed, failed):
-        WhoDunit.__init__(o, errata, passed, failed)
+    def __init__(self, errata, passed, failed):
+        WhoDunit.__init__(self, errata, passed, failed)
 
 
-    def audition(o):
+    def audition(self):
         print("\n{}".format(chr(45) * 53))
-        if hasattr(o, 'errata') and len(o.errata):
+        if hasattr(self, 'errata') and len(self.errata):
             straw = "anomaly[{}]: {}"
-            if callable(o.itemize):
-                for numb, desc in o.itemize():
+            if callable(self.itemize):
+                for numb, desc in self.itemize():
                     print(straw.format(numb + 1, desc))
             else:
-                for desc in tuple(o.errata):
+                for desc in tuple(self.errata):
                     print(straw.format('?', desc))
 
-        print("\n\t[ {} ]\n".format(o))
+        print("\n\t[ {} ]\n".format(self))
         return None
 
 
@@ -57,7 +59,7 @@ def wiretap(word, numb):
     return stout
 
 
-def databank(vc):
+def databank_test(vc):
     boards = obtain('boards')
     chrono = obtain('chrono')
     dyadic = obtain('dyadic')
@@ -119,7 +121,7 @@ def databank(vc):
     return None
 
 
-def polygraph(vc):
+def polygraph_test(vc):
     toggle = obtain('toggle')
 
     sign = 'k1'
@@ -144,7 +146,7 @@ def polygraph(vc):
     return None
 
 
-def laelaps(vc):
+def laelaps_test(vc):
     toggle = obtain('toggle')
     bone = None
 
@@ -172,21 +174,21 @@ def laelaps(vc):
     return None
 
 
-def pitchfork(vc):
+def pitchfork_test(vc):
     toggle = obtain('toggle')
 
     sign = 'j3'
     cord = omphalos[sign]
     pegbox = [
-      Bj(cord),
-      Fn(cord),
-      Cn(cord),
-      Gn(cord),
-      Dn(cord),
-      An(cord),
-      En(cord),
-      Bn(cord),
-      Fk(cord),
+      sBj(cord),
+      sFn(cord),
+      sCn(cord),
+      sGn(cord),
+      sDn(cord),
+      sAn(cord),
+      sEn(cord),
+      sBn(cord),
+      sFk(cord),
     ]
 
     span = 0
@@ -219,22 +221,22 @@ def pitchfork(vc):
     return None
 
 
-def screenplay(vc):
+def screenplay_test(vc):
     boards = obtain('boards')
     tuning = boards[0]
 
     sign = 'n0'
     cord = omphalos[sign]
     pegbox = [
-      Bj(cord),
-      Fn(cord),
-      Cn(cord),
-      Gn(cord),
-      Dn(cord),
-      An(cord),
-      En(cord),
-      Bn(cord),
-      Fk(cord),
+      sBj(cord),
+      sFn(cord),
+      sCn(cord),
+      sGn(cord),
+      sDn(cord),
+      sAn(cord),
+      sEn(cord),
+      sBn(cord),
+      sFk(cord),
     ]
 
     try:
@@ -247,7 +249,7 @@ def screenplay(vc):
     return None
 
 
-def matrices(vc):
+def matrices_test(vc):
     sign = 'n0'
     cord = omphalos[sign]
 
@@ -274,7 +276,7 @@ def matrices(vc):
     return None
 
 
-def sentinel(vc):
+def sentinel_test(vc):
     sign = '0123456789ABCDEF'
     most = 10
 
@@ -296,7 +298,7 @@ def sentinel(vc):
     return None
 
 
-def signatory(vc):
+def signatory_test(vc):
     stones = obtain('stones')
 
     lyra = fkbjdn
@@ -328,37 +330,37 @@ def signatory(vc):
 def scrutinize():
     vc = VariCap(list(), int(), int())
 
-    desc = 'signatory test'
+    desc = signatory_test.__name__
     print("\n\t\t{}".format(desc.upper()))
-    signatory(vc)
+    signatory_test(vc)
 
-    desc = 'sentinel test'
+    desc = sentinel_test.__name__
     print("\t\t{}\n".format(desc.upper()))
-    sentinel(vc)
+    sentinel_test(vc)
 
-    desc = 'matrices test'
+    desc = matrices_test.__name__
     print("\t\t{}\n".format(desc.upper()))
-    matrices(vc)
+    matrices_test(vc)
 
-    desc = 'screenplay test'
+    desc = screenplay_test.__name__
     print("\n\t\t{}\n".format(desc.upper()))
-    screenplay(vc)
+    screenplay_test(vc)
 
-    desc = 'pitchfork test'
+    desc = pitchfork_test.__name__
     print("\n\t\t{}".format(desc.upper()))
-    pitchfork(vc)
+    pitchfork_test(vc)
 
-    desc = 'laelaps test'
+    desc = laelaps_test.__name__
     print("\n\t\t{}".format(desc.upper()))
-    laelaps(vc)
+    laelaps_test(vc)
 
-    desc = 'polygraph test'
+    desc = polygraph_test.__name__
     print("\n\t\t{}".format(desc.upper()))
-    polygraph(vc)
+    polygraph_test(vc)
 
-    desc = 'databank test'
+    desc = databank_test.__name__
     print("\n\t\t{}".format(desc.upper()))
-    databank(vc)
+    databank_test(vc)
 
     # printout results
     vc.audition()
