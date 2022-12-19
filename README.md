@@ -1,5 +1,5 @@
 # Bonzosaurous
-Paleontology
+Tonalogical metalanguage
 
 ---
 

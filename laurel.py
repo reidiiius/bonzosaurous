@@ -12,6 +12,7 @@ def samples():
     """Interactive mode command examples."""
     mnemo = __name__
     stock = 'guitar'
+    argos = "['cgdae', 'n0', 'k6']"
     chart = "\t{}.fabricate({}, {})\n"
     lupus = "\t{} = {}.{}hound('{}')\n"
     tafel = "\t{}.chalkboard({})\n"
@@ -22,6 +23,7 @@ def samples():
     batch = [
       "\n\t\t{}\n".format(mnemo.upper()),
       "\t{}.entryway()\n".format(mnemo),
+      "\t{}.entryway({})\n".format(mnemo, argos),
       "\t{} = {}.eadgbe\n".format(stock, mnemo),
       chart.format(mnemo, stock, "['n0', 'k1']"),
       lupus.format('occurs', mnemo, 'grey', trait),
@@ -62,16 +64,16 @@ def tutorial():
     return None
 
 
-def entryway():
+def entryway(argots=[]):
     """Application entry point."""
     arts = list()
     clef = 'i0'
 
-    if len(sys.argv) > len(obtain('stones')):
+    if len(argots) > len(obtain('stones')):
         print("Request denied!")
         sys.exit(0)
     else:
-        arts = sys.argv[1:]
+        arts.extend(argots)
 
     if bool(omphalos) and clef not in omphalos:
         omphalos[clef] = obtain('silent')
@@ -136,7 +138,7 @@ def entryway():
 
 
 if __name__ == '__main__':
-    entryway()
+    entryway(sys.argv[1:])
 else:
     samples()
 

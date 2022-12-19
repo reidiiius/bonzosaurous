@@ -111,6 +111,21 @@ def databank_test(vc):
             vc.failed += 1
             print(vc.logist(anomaly))
 
+    horus = horolog()
+    try:
+        assert isinstance(horus, str), "instance String"
+        vc.passed += 1
+    except Exception as anomaly:
+        vc.failed += 1
+        print(vc.logist(anomaly))
+
+    try:
+        assert horus[0].isdigit(), "horolog is digit"
+        vc.passed += 1
+    except Exception as anomaly:
+        vc.failed += 1
+        print(vc.logist(anomaly))
+
     try:
         assert isinstance(toggle, bool), "instance Boolean"
         vc.passed += 1

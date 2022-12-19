@@ -26,13 +26,18 @@ def refined():
     return sorted(unique)
 
 
+def horolog():
+    epoch = format(time.time(), '14.3f')
+    return epoch
+
+
 def obtain(item='toggle'):
     """Dictionary of useful things."""
     bank = dict(
       boards = (
         'beadgcf','bfbfb','cgdae','dadgad','dgdgbd','eadgbe','fkbjdn','unison'
       ),
-      chrono = '-i' + format(time.time(), '14.3f'),
+      chrono = "-i{}".format(horolog()),
       dyadic = list(omphalos.items()),
       metals = (
         '__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu'
