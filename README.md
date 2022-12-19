@@ -110,6 +110,10 @@ REPL
 
     laurel.samples()
 
+:
+
+    exit()
+
 ---
 
 ### Distribution
