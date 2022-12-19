@@ -1,5 +1,5 @@
 # Bonzosaurous
-Tonalogical metalanguage
+Tonalog metalanguage
 
 ---
 
@@ -37,6 +37,78 @@ Command-line
 :
 
     python3 -B laurel.py eadgbe gamut | sensible-pager
+
+REPL
+
+    python3
+
+:
+
+    import laurel
+
+:
+
+    laurel.entryway()
+
+:
+
+    laurel.entryway(['cgdae', 'n0', 'k6'])
+
+:
+
+    laurel.entryway(['group', 'vu'])
+
+:
+
+    laurel.entryway(['query', '56'])
+
+:
+
+    laurel.entryway(['tonal'])
+
+:
+
+    tuners = laurel.obtain('boards')
+
+:
+
+    laurel.chalkboard(tuners)
+
+:
+
+    guitar = laurel.eadgbe
+
+:
+
+    laurel.fabricate(guitar, ['n0', 'k1'])
+
+:
+
+    occurs = laurel.greyhound('tv')
+
+:
+
+    laurel.chalkboard(occurs)
+
+:
+
+    occurs = laurel.wolfhound('j3')
+
+:
+
+    laurel.chalkboard(occurs)
+
+:
+
+    traits = laurel.refined()
+
+:
+
+    laurel.chalkboard(traits)
+
+:
+
+    laurel.samples()
 
 ---
 
