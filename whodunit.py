@@ -61,7 +61,6 @@ def wiretap(word, numb):
 
 def databank_test(vc):
     boards = obtain('boards')
-    chrono = obtain('chrono')
     dyadic = obtain('dyadic')
     metals = obtain('metals')
     models = obtain('models')
@@ -71,6 +70,13 @@ def databank_test(vc):
     toggle = obtain('toggle')
 
     unique = refined()
+
+    try:
+        assert all(omphalos), "omphalos elements"
+        vc.passed += 1
+    except Exception as anomaly:
+        vc.failed += 1
+        print(vc.logist(anomaly))
 
     try:
         assert len(unique) == 63, "refined 63 elementals"
@@ -103,7 +109,7 @@ def databank_test(vc):
             vc.failed += 1
             print(vc.logist(anomaly))
 
-    for kind in (chrono, resign, silent):
+    for kind in (resign, silent):
         try:
             assert isinstance(kind, str), "instance String"
             vc.passed += 1

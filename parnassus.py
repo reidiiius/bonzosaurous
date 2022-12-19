@@ -37,7 +37,6 @@ def obtain(item='toggle'):
       boards = (
         'beadgcf','bfbfb','cgdae','dadgad','dgdgbd','eadgbe','fkbjdn','unison'
       ),
-      chrono = "-i{}".format(horolog()),
       dyadic = list(omphalos.items()),
       metals = (
         '__','Ti','Mn','Fe','Cu','Ag','Sn','Au','Hg','Pb','Ur','Np','Pu'
@@ -189,7 +188,8 @@ def sFk(cord):
 
 def layout(sign, tuning, pegbox):
     """Printout headline and subsequent strings."""
-    print("\t" + sign + '-' + tuning + obtain('chrono'))
+    chrono = "-i{}".format(horolog())
+    print("\t" + sign + '-' + tuning + chrono)
     for yarn in pegbox:
         print("\t" + yarn)
     return None
