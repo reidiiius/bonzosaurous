@@ -1,5 +1,5 @@
 # Bonzosaurous
-Tonalog metalanguage
+Tonality metalanguage
 
 ---
 
